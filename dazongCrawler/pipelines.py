@@ -12,9 +12,9 @@ class DazongcrawlerPipeline(object):
         pass
     def process_item(self, item, spider):
         content = json.dumps(dict(item), ensure_ascii=False)
+        print("process_item **********",item["name"])
         self.f.write(content)
         return item
 
     def close_spider(self,spider):
         self.f.close()
-        pass

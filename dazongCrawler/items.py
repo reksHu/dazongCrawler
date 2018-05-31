@@ -14,3 +14,4 @@ class DazongcrawlerItem(scrapy.Item):
     name = scrapy.Field()
     tag = scrapy.Field()
     location = scrapy.Field()
+    meanPrice = scrapy.Field()

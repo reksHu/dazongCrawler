@@ -54,3 +54,17 @@ class DazongcrawlerSpiderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+from scrapy.downloadermiddlewares.retry import RetryMiddleware
+# from scrapy.downloadermiddlewares.redirect import RedirectMiddleware
+from fake_useragent import FakeUserAgentError
+class FakeUserAgentErrorRetryMiddleware(RetryMiddleware):
+    def process_exception(self, request, exception, spider):
+        print("*********** FakeUserAgentErrorRetryMiddleware ******************")
+        if type(exception) == FakeUserAgentError:
+            print("process fake and try again")
+            # return self._retry(request, exception, spider)
+
+    def process_response(self, request, response, spider):
+        print("########### middle weare retry",response.status)
