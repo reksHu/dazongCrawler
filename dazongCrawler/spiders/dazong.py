@@ -56,6 +56,8 @@ class DazongSpider(scrapy.Spider):
         elif failure.check(DNSLookupError):
             print("dns:",failure)
 
+            
+
 
     def generat_items(self,li):
         item = DazongcrawlerItem()
